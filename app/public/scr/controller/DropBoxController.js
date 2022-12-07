@@ -10,17 +10,17 @@ class DropBoxController {
 
     initEvents(){
 
-        this.btnSendFileEl.addEventListener('click', event =>{
+        this.btnSendFileEl.addEventListener('click', (event) =>{
 
             this.inputFilesEl.click();
 
         });
 
-        this.inputFilesEl.addEventListener('change', event =>{
+        this.inputFilesEl.addEventListener('change', (event) =>{
 
             this.uploadTask(event.target.files);
 
-            this.snackModalEl.style.display = 'block';
+            this.snackModalEl.style.display = 'block'
 
         });
 
@@ -41,7 +41,7 @@ class DropBoxController {
                 ajax.onload = event => {
 
                     try {
-                        resolve(JSON.parse(ajax,responseText));
+                        resolve(JSON.parse(ajax.responseText))
                     } catch (e) {
 
                         reject(e);
@@ -58,12 +58,12 @@ class DropBoxController {
 
                 let formData = new FormData();
 
-                formData.append('input-file', file);
+                formData.append('input-file', file)
 
-                ajax.send(formData);
-        }));
+                ajax.send(formData)
+        }))
 
-        });
+        })
 
         return Promise.all(promises);
 
